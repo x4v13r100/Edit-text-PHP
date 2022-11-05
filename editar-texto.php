@@ -1,9 +1,14 @@
 <?php
-// Variable
-$archivo = $_GET['archivo'];
-//--------Guardar el archivo txt
-if ($_GET['accion'] == 'Guardar') {
-  file_put_contents($archivo, $_GET['texto']);
+//----------- Variable
+$archivo = 'texto.txt';
+//--------- (isset "Si Existe")
+if (isset($_GET['archivo'])) {
+
+  $archivo = $_GET['archivo'];
+  //--------Guardar el archivo txt
+  if ($_GET['accion'] == 'Guardar') {
+    file_put_contents($archivo, $_GET['texto']);
+  }
 }
 
 // --------Leer archivo externo txt
@@ -14,8 +19,8 @@ $texto = file_get_contents($archivo);
   <!-- Formulario   -->
  <form>
     <label> Nombre del Archivo: </label>
-    <input type="text" name="archivo" value="<?=$archivo?>"/><br>
-    <textarea name="texto"><?=$texto?></textarea>
+    <input type="text" name="archivo" value="<?= $archivo ?>"/><br>
+    <textarea name="texto"><?= $texto ?></textarea>
     <br>
     <input type="submit" value="Guardar" name="accion" />
     <input type="submit" value="Cargar" name="accion" />
